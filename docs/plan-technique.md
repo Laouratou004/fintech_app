@@ -47,12 +47,12 @@ Les transferts d'argent de la diaspora guinéenne représentent **plusieurs cent
 
 ### 1.3 Objectifs du MVP
 
-- ✅ Permettre la création d'un transfert international en moins de 60 secondes
-- ✅ Afficher en temps réel le taux officiel BCRG et la conversion vers le GNF
-- ✅ Gérer un carnet de bénéficiaires avec favoris
-- ✅ Stocker un historique persistant des transferts
-- ✅ Appliquer les règles AML/KYC (plafonds, vérifications)
-- ✅ Supporter 4 réseaux Mobile Money guinéens
+- Permettre la création d'un transfert international en moins de 60 secondes
+- Afficher en temps réel le taux officiel BCRG et la conversion vers le GNF
+- Gérer un carnet de bénéficiaires avec favoris
+- Stocker un historique persistant des transferts
+- Appliquer les règles AML/KYC (plafonds, vérifications)
+- Supporter 4 réseaux Mobile Money guinéens
 
 ---
 

@@ -1,4 +1,4 @@
-# 🇬🇳 Diaspora Pay
+# Diaspora Pay
 
 > Application mobile fintech de transfert d'argent de la diaspora guinéenne vers la République de Guinée.
 
@@ -10,44 +10,44 @@
 
 ---
 
-## 📑 Table des matières
+## Table des matières
 
-- [Présentation](#-présentation)
-- [Compte de démonstration](#-compte-de-démonstration)
-- [Fonctionnalités](#-fonctionnalités)
-- [Captures d'écran](#-captures-décran)
-- [Stack technique](#-stack-technique)
-- [Architecture](#-architecture)
-- [Structure du projet](#-structure-du-projet)
-- [Installation](#-installation)
-- [Configuration Supabase](#-configuration-supabase)
-- [Lancement de l'app](#-lancement-de-lapp)
-- [Modèle de données](#-modèle-de-données)
-- [Sécurité](#-sécurité)
-- [Documentation](#-documentation)
-- [Roadmap](#-roadmap)
-- [Contexte académique](#-contexte-académique)
+- [Présentation](#présentation)
+- [Compte de démonstration](#compte-de-démonstration)
+- [Fonctionnalités](#fonctionnalités)
+- [Captures d'écran](#captures-décran)
+- [Stack technique](#stack-technique)
+- [Architecture](#architecture)
+- [Structure du projet](#structure-du-projet)
+- [Installation](#installation)
+- [Configuration Supabase](#configuration-supabase)
+- [Lancement de l'app](#lancement-de-lapp)
+- [Modèle de données](#modèle-de-données)
+- [Sécurité](#sécurité)
+- [Documentation](#documentation)
+- [Roadmap](#roadmap)
+- [Contexte académique](#contexte-académique)
 
 ---
 
-## 🎯 Présentation
+## Présentation
 
 **Diaspora Pay** est une application mobile React Native qui permet aux membres de la diaspora guinéenne (vivant en France, aux États-Unis, au Canada, en Belgique, en Allemagne, au Royaume-Uni, dans les pays du Golfe ou en Afrique centrale) d'envoyer de l'argent à leurs proches en République de Guinée de manière simple, rapide et sécurisée.
 
 L'application gère :
 
-- ✅ La **conversion automatique** vers le Franc Guinéen (GNF) au taux officiel BCRG
-- ✅ Les principaux **réseaux Mobile Money** guinéens (Orange Money, MTN MoMo, Wave, virement bancaire)
-- ✅ Le calcul intelligent des **frais de service** (palier × réseau × pays)
-- ✅ La **conformité AML/KYC** (plafonds mensuels, seuils de vérification, plafond unique)
-- ✅ Un **carnet de bénéficiaires** persistant avec favoris
-- ✅ Un **historique complet** des transferts avec recherche et filtres
+- La **conversion automatique** vers le Franc Guinéen (GNF) au taux officiel BCRG
+- Les principaux **réseaux Mobile Money** guinéens (Orange Money, MTN MoMo, Wave, virement bancaire)
+- Le calcul intelligent des **frais de service** (palier x réseau x pays)
+- La **conformité AML/KYC** (plafonds mensuels, seuils de vérification, plafond unique)
+- Un **carnet de bénéficiaires** persistant avec favoris
+- Un **historique complet** des transferts avec recherche et filtres
 
 L'app est entièrement traduite en français et propose un design fintech moderne avec **mode sombre/clair** automatique.
 
 ---
 
-## 🔑 Compte de démonstration
+## Compte de démonstration
 
 Pour tester l'application sans créer de compte, utilisez les identifiants pré-configurés visibles sur l'écran de connexion :
 
@@ -56,51 +56,51 @@ Pour tester l'application sans créer de compte, utilisez les identifiants pré-
 | **E-mail** | `demo@diasporapay.com` |
 | **Mot de passe** | `Demo2026!` |
 
-> 💡 Sur l'écran de login, touchez le bloc vert en pointillés pour pré-remplir automatiquement les champs.
+Sur l'écran de login, touchez le bloc vert en pointillés pour pré-remplir automatiquement les champs.
 
 Ce compte contient déjà quelques bénéficiaires et transferts pour démonstration.
 
 ---
 
-## ⚡ Fonctionnalités
+## Fonctionnalités
 
-### 🔐 Authentification
+### Authentification
 - Inscription avec validation (nom, e-mail, téléphone, pays, mot de passe + confirmation)
 - Connexion sécurisée (Supabase Auth + JWT)
 - **Session persistante** entre les redémarrages de l'app (AsyncStorage)
 - Déconnexion avec confirmation
 
-### 💸 Création de transferts
+### Création de transferts
 - **Pavé numérique intégré** pour la saisie rapide du montant
-- Sélection du pays d'origine (10 pays diaspora supportés)
+- Sélection du pays d'origine (11 pays supportés)
 - Choix de la devise (EUR, USD, CAD, GBP, GNF)
 - Sélection du réseau Mobile Money
 - **Conversion en temps réel** affichée pendant la saisie
 - Récapitulatif détaillé avant confirmation (montant, frais, taux, total)
 - Génération d'une référence unique
-- Avertissements KYC automatiques au-delà de 3 000 €
+- Avertissements KYC automatiques au-delà de 3 000 EUR
 
-### 📒 Carnet de bénéficiaires
+### Carnet de bénéficiaires
 - CRUD complet (ajout, suppression, modification)
 - Système de **favoris** avec affichage rapide sur l'accueil
 - Validation des numéros Mobile Money
-- Catégorisation par relation (mère, frère, ami…)
+- Catégorisation par relation (mère, frère, ami, etc.)
 
-### 📊 Tableau de bord
-- Carte hero avec taux BCRG live (EUR / USD / CAD / GBP → GNF)
+### Tableau de bord
+- Carte hero avec taux BCRG live (EUR / USD / CAD / GBP vers GNF)
 - Statistiques de l'utilisateur (total envoyé, nombre de transferts, économies)
 - Barre de progression du plafond mensuel
 - Badge KYC (vérifié / en attente)
 - Actions rapides (envoyer, bénéficiaires, historique, QR)
 - Liste des transferts récents
 
-### 🕓 Historique
+### Historique
 - FlatList **optimisée** (`initialNumToRender`, `windowSize`, `maxToRenderPerBatch`)
 - Recherche par nom de bénéficiaire ou référence
 - Filtres par statut (tous / reçus / en cours / échec)
 - Détail complet de chaque transfert avec **partage natif**
 
-### ⚙️ Profil et préférences
+### Profil et préférences
 - Édition des informations personnelles
 - Choix de la **langue** (Français / English / العربية)
 - Choix de la **devise par défaut**
@@ -113,9 +113,9 @@ Ce compte contient déjà quelques bénéficiaires et transferts pour démonstra
 
 ---
 
-## 📱 Captures d'écran
+## Captures d'écran
 
-> _À ajouter : captures de Home, Transfert, Historique, Profil_
+> _À ajouter : captures de Home, Transfert, Historique, Profil._
 
 ```
 [Login]  [Home Dashboard]  [Transfer Screen]  [Beneficiaries]
@@ -123,12 +123,12 @@ Ce compte contient déjà quelques bénéficiaires et transferts pour démonstra
 
 ---
 
-## 🛠️ Stack technique
+## Stack technique
 
 | Couche | Technologie | Version |
 |---|---|---|
 | **Framework mobile** | Expo (React Native) | SDK 54 |
-| **Langage** | JavaScript ES2022 + JSX | — |
+| **Langage** | JavaScript ES2022 + JSX | - |
 | **UI** | React Native + composants atomiques custom | 0.81.5 |
 | **Navigation** | React Navigation (tabs + stack) | 7.x |
 | **État global** | Redux Toolkit | 2.x |
@@ -140,38 +140,38 @@ Ce compte contient déjà quelques bénéficiaires et transferts pour démonstra
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│              Application Mobile (Expo)                  │
-│                                                         │
-│   ┌─────────┐  ┌──────────┐  ┌────────────┐           │
-│   │ Screens │  │Components│  │   Theme    │           │
-│   └────┬────┘  └──────────┘  └────────────┘           │
-│        │                                                │
-│   ┌────▼──────────────────────────────────┐           │
-│   │      Couche État (State)              │           │
-│   │  ┌────────────┐  ┌──────────────────┐ │           │
-│   │  │ Context API│  │ Redux Toolkit    │ │           │
-│   │  │(Auth/Theme)│  │(Transfers/Benefs)│ │           │
-│   │  └────────────┘  └──────────────────┘ │           │
-│   └────┬──────────────────────┬───────────┘           │
-│        │                      │                        │
-│   ┌────▼──────┐       ┌───────▼────────┐              │
-│   │ Services  │       │ Logique pure   │              │
-│   │ distants  │       │ (utils, calc)  │              │
-│   └────┬──────┘       └────────────────┘              │
-└────────┼───────────────────────────────────────────────┘
-         │
-         ▼
-┌─────────────────────────────────────────────────────────┐
-│              Supabase Cloud (PostgreSQL)                │
-│   ┌────────────┐  ┌────────────┐  ┌──────────────┐    │
-│   │ Database   │  │   Auth     │  │   Storage    │    │
-│   │ + RLS      │  │  (JWT)     │  │  (futur)     │    │
-│   └────────────┘  └────────────┘  └──────────────┘    │
-└─────────────────────────────────────────────────────────┘
++---------------------------------------------------------+
+|              Application Mobile (Expo)                  |
+|                                                         |
+|   +---------+  +----------+  +------------+             |
+|   | Screens |  |Components|  |   Theme    |             |
+|   +----+----+  +----------+  +------------+             |
+|        |                                                |
+|   +----v----------------------------------+             |
+|   |      Couche État (State)              |             |
+|   |  +------------+  +------------------+ |             |
+|   |  | Context API|  | Redux Toolkit    | |             |
+|   |  |(Auth/Theme)|  |(Transfers/Benefs)| |             |
+|   |  +------------+  +------------------+ |             |
+|   +----+--------------------+-------------+             |
+|        |                    |                           |
+|   +----v------+       +-----v----------+                |
+|   | Services  |       | Logique pure   |                |
+|   | distants  |       | (utils, calc)  |                |
+|   +----+------+       +----------------+                |
++--------+------------------------------------------------+
+         |
+         v
++---------------------------------------------------------+
+|              Supabase Cloud (PostgreSQL)                |
+|   +------------+  +------------+  +--------------+      |
+|   | Database   |  |   Auth     |  |   Storage    |      |
+|   | + RLS      |  |  (JWT)     |  |  (futur)     |      |
+|   +------------+  +------------+  +--------------+      |
++---------------------------------------------------------+
 ```
 
 ### Principes
@@ -179,11 +179,11 @@ Ce compte contient déjà quelques bénéficiaires et transferts pour démonstra
 - **Single source of truth** : Supabase = source persistante, Redux = cache local hydraté
 - **Optimistic UI** : actions instantanées côté UI puis confirmation DB
 - **Theme-aware** : aucune couleur en dur, tout passe par `useTheme()`
-- **Type-safe domain** : conversions snake_case ↔ camelCase centralisées dans les slices
+- **Type-safe domain** : conversions snake_case vers camelCase centralisées dans les slices
 
 ---
 
-## 📁 Structure du projet
+## Structure du projet
 
 ```
 fintechapp/
@@ -249,7 +249,7 @@ fintechapp/
 
 ---
 
-## 🚀 Installation
+## Installation
 
 ### Prérequis
 
@@ -273,7 +273,7 @@ npm install
 
 ---
 
-## ⚙️ Configuration Supabase
+## Configuration Supabase
 
 > Cette étape est obligatoire pour que l'authentification et la persistance fonctionnent.
 
@@ -289,7 +289,7 @@ npm install
 
 ### 2. Exécuter le schéma SQL
 
-1. Dans le dashboard Supabase, ouvrir **`SQL Editor`** → **`+ New query`**
+1. Dans le dashboard Supabase, ouvrir **`SQL Editor`** puis **`+ New query`**
 2. Copier le contenu intégral du fichier [`supabase/schema.sql`](supabase/schema.sql)
 3. Coller dans l'éditeur et cliquer **`Run`**
 4. Vérifier dans **`Table Editor`** que les 3 tables sont créées :
@@ -299,13 +299,13 @@ npm install
 
 ### 3. Désactiver la confirmation par e-mail (recommandé pour le développement)
 
-1. Aller dans **`Authentication`** → **`Sign In / Providers`**
+1. Aller dans **`Authentication`** puis **`Sign In / Providers`**
 2. Trouver l'option **`Confirm email`**
 3. **Désactiver** le toggle puis **`Save changes`**
 
 ### 4. Récupérer les clés API
 
-1. Aller dans **`Project Settings`** → **`API Keys`**
+1. Aller dans **`Project Settings`** puis **`API Keys`**
 2. Copier **`Project URL`** (format : `https://xxxxx.supabase.co`)
 3. Copier **`anon` `public` key** (sous l'onglet **`Legacy anon, service_role API keys`**)
 
@@ -320,11 +320,11 @@ Ouvrir `app.json` à la racine et remplir la section `extra` :
 }
 ```
 
-⚠️ Les variables `extra` ne se rechargent **pas à chaud** — il faut redémarrer Expo après modification.
+Les variables `extra` ne se rechargent **pas à chaud** : il faut redémarrer Expo après modification.
 
 ---
 
-## ▶️ Lancement de l'app
+## Lancement de l'app
 
 ### Démarrer le serveur de développement
 
@@ -340,7 +340,7 @@ Une fois Metro lancé, dans le terminal :
 |---|---|
 | `i` | **iOS Simulator** (Mac + Xcode requis) |
 | `a` | **Android Emulator** (Android Studio requis) |
-| `w` | **Web** (navigateur — démarrage instantané) |
+| `w` | **Web** (navigateur, démarrage instantané) |
 | QR Code | **Smartphone physique** (via app Expo Go) |
 
 ### Mode Web (recommandé pour démarrer)
@@ -353,18 +353,18 @@ L'app s'ouvre automatiquement sur `http://localhost:8081`. Utile pour debug rapi
 
 ---
 
-## 🗄️ Modèle de données
+## Modèle de données
 
 ### Schéma simplifié
 
 ```
 auth.users (Supabase Auth)
-    │
-    ├──1:1── profiles               (nom, KYC, plafond, préférences)
-    │
-    ├──1:N── beneficiaries          (carnet personnel)
-    │
-    └──1:N── transfers              (historique des transferts)
+    |
+    +--1:1-- profiles               (nom, KYC, plafond, préférences)
+    |
+    +--1:N-- beneficiaries          (carnet personnel)
+    |
+    +--1:N-- transfers              (historique des transferts)
 ```
 
 ### Table `transfers` (extrait)
@@ -372,7 +372,7 @@ auth.users (Supabase Auth)
 | Colonne | Type | Description |
 |---|---|---|
 | `id` | uuid | Clé primaire |
-| `user_id` | uuid FK | → auth.users(id) |
+| `user_id` | uuid FK | vers auth.users(id) |
 | `receiver_name` | text | Nom du bénéficiaire |
 | `receiver_phone` | text | Numéro Mobile Money |
 | `network` | enum | orange-money / mtn-momo / wave / bank-transfer |
@@ -389,7 +389,7 @@ Voir le schéma complet dans [`supabase/schema.sql`](supabase/schema.sql).
 
 ---
 
-## 🛡️ Sécurité
+## Sécurité
 
 ### Row Level Security (RLS)
 
@@ -397,9 +397,9 @@ Voir le schéma complet dans [`supabase/schema.sql`](supabase/schema.sql).
 
 | Table | SELECT | INSERT | UPDATE | DELETE |
 |---|---|---|---|---|
-| `profiles` | `id = auth.uid()` | (trigger auto) | `id = auth.uid()` | — |
-| `beneficiaries` | `user_id = auth.uid()` | ✓ | ✓ | ✓ |
-| `transfers` | `user_id = auth.uid()` | ✓ | ✓ | — |
+| `profiles` | `id = auth.uid()` | (trigger auto) | `id = auth.uid()` | - |
+| `beneficiaries` | `user_id = auth.uid()` | oui | oui | oui |
+| `transfers` | `user_id = auth.uid()` | oui | oui | - |
 
 ### Conformité AML/KYC (client)
 
@@ -408,7 +408,7 @@ Voir le schéma complet dans [`supabase/schema.sql`](supabase/schema.sql).
 | Montant minimum | 5 unités | Bloque |
 | Plafond unique | 10 000 unités | Bloque |
 | Plafond mensuel | Variable par user | Bloque |
-| KYC renforcé | ≥ 3 000 unités | Avertissement |
+| KYC renforcé | >= 3 000 unités | Avertissement |
 | Validation téléphone | min 8 chiffres | Erreur |
 
 ### Authentification
@@ -419,7 +419,7 @@ Voir le schéma complet dans [`supabase/schema.sql`](supabase/schema.sql).
 
 ---
 
-## 📚 Documentation
+## Documentation
 
 | Document | Description |
 |---|---|
@@ -429,9 +429,9 @@ Voir le schéma complet dans [`supabase/schema.sql`](supabase/schema.sql).
 
 ---
 
-## 🗺️ Roadmap
+## Roadmap
 
-### ✅ Sprint 1 — MVP (livré)
+### Sprint 1 — MVP (livré)
 
 - [x] Authentification Supabase
 - [x] CRUD transferts + bénéficiaires
@@ -441,16 +441,16 @@ Voir le schéma complet dans [`supabase/schema.sql`](supabase/schema.sql).
 - [x] FlatList optimisée
 - [x] Validation AML/KYC
 
-### 🔄 Sprint 2 — Production-ready
+### Sprint 2 — Production-ready
 
 - [ ] Intégration **réelle** de l'API BCRG (HTTP)
 - [ ] Upload de documents KYC (Supabase Storage)
-- [ ] Edge Function de transition de statut (pending → completed)
+- [ ] Edge Function de transition de statut (pending vers completed)
 - [ ] Notifications push (Expo Notifications)
 - [ ] Réactivation de la confirmation e-mail
 - [ ] Captures d'écran et démo vidéo
 
-### 🚀 Sprint 3 — Différenciation
+### Sprint 3 — Différenciation
 
 - [ ] QR Code pour bénéficiaires
 - [ ] Authentification biométrique (`expo-local-authentication`)
@@ -458,7 +458,7 @@ Voir le schéma complet dans [`supabase/schema.sql`](supabase/schema.sql).
 - [ ] Mode hors-ligne (cache SQLite)
 - [ ] Statistiques mensuelles + graphiques
 
-### 🌟 Vision long terme
+### Vision long terme
 
 - Intégration partenaires Mobile Money réels (Orange, MTN, Wave APIs)
 - IA de détection de fraude
@@ -468,22 +468,22 @@ Voir le schéma complet dans [`supabase/schema.sql`](supabase/schema.sql).
 
 ---
 
-## 🎓 Contexte académique
+## Contexte académique
 
 Ce projet est réalisé dans le cadre de l'**Exercice 21 — Application Fintech Intelligente de Transfert d'Argent de la Diaspora Guinéenne vers la République de Guinée**.
 
 ### Compétences travaillées
 
-- ✅ React Native avancé (Expo SDK 54)
-- ✅ FlatList professionnelle avec optimisations
-- ✅ Gestion d'état moderne (Redux Toolkit + Context API)
-- ✅ Architecture mobile scalable
-- ✅ Intégration backend (Supabase / PostgreSQL)
-- ✅ UI/UX fintech moderne (dark mode, accessibilité)
-- ✅ Calculs monétaires et conversion de devises
-- ✅ Réglementation bancaire (BCRG, AML/KYC)
-- ✅ Sécurité mobile (RLS, JWT, validation)
-- ✅ Conformité financière
+- React Native avancé (Expo SDK 54)
+- FlatList professionnelle avec optimisations
+- Gestion d'état moderne (Redux Toolkit + Context API)
+- Architecture mobile scalable
+- Intégration backend (Supabase / PostgreSQL)
+- UI/UX fintech moderne (dark mode, accessibilité)
+- Calculs monétaires et conversion de devises
+- Réglementation bancaire (BCRG, AML/KYC)
+- Sécurité mobile (RLS, JWT, validation)
+- Conformité financière
 
 ### Domaines de recherche ouverts
 
@@ -496,7 +496,7 @@ Ce projet est réalisé dans le cadre de l'**Exercice 21 — Application Fintech
 
 ---
 
-## 📦 Dépendances principales
+## Dépendances principales
 
 ```json
 {
@@ -519,19 +519,19 @@ Ce projet est réalisé dans le cadre de l'**Exercice 21 — Application Fintech
 
 ---
 
-## 🤝 Contribution
+## Contribution
 
-Ce projet est **académique** — les contributions externes ne sont pas attendues pendant la durée de l'exercice. Une fois l'évaluation passée, le projet pourra être ouvert.
+Ce projet est **académique** : les contributions externes ne sont pas attendues pendant la durée de l'exercice. Une fois l'évaluation passée, le projet pourra être ouvert.
 
 ---
 
-## 📄 Licence
+## Licence
 
 Projet académique — usage pédagogique uniquement. Tous droits réservés.
 
 ---
 
-## 👤 Auteur
+## Auteur
 
 **Laouratou Diallo**
 - GitHub : [@Laouratou004](https://github.com/Laouratou004)
@@ -539,15 +539,9 @@ Projet académique — usage pédagogique uniquement. Tous droits réservés.
 
 ---
 
-## 🙏 Remerciements
+## Remerciements
 
 - **Banque Centrale de la République de Guinée (BCRG)** — référence réglementaire
 - **Supabase** — backend open-source
 - **Expo** — framework mobile
 - L'équipe pédagogique pour l'énoncé de l'Exercice 21
-
----
-
-<p align="center">
-  Réalisé avec ❤️ pour la diaspora guinéenne 🇬🇳
-</p>

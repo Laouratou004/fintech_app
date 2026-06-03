@@ -26,9 +26,9 @@ import { currencies } from '../data/countries';
 
 // Libellés des langues disponibles
 const LANGUAGES = [
-  { code: 'fr', label: 'Français', flag: '🇫🇷' },
-  { code: 'en', label: 'English', flag: '🇬🇧' },
-  { code: 'ar', label: 'العربية', flag: '🇸🇦' },
+  { code: 'fr', label: 'Français' },
+  { code: 'en', label: 'English' },
+  { code: 'ar', label: 'العربية' },
 ];
 
 const ProfileScreen = () => {
@@ -90,7 +90,7 @@ const ProfileScreen = () => {
   // Sélecteur de langue via Alert (style action-sheet)
   const pickLanguage = () => {
     const buttons = LANGUAGES.map((l) => ({
-      text: `${l.flag}  ${l.label}`,
+      text: l.label,
       onPress: () => updateProfile({ language: l.code }),
     }));
     buttons.push({ text: 'Annuler', style: 'cancel' });
@@ -148,8 +148,8 @@ const ProfileScreen = () => {
   const showKyc = () => {
     const status =
       user.kycLevel === 'verified'
-        ? '✅ Votre identité a été vérifiée. Plafond mensuel actif.'
-        : '⏳ Vérification en cours. Téléchargez votre pièce d’identité pour finaliser.';
+        ? 'Votre identité a été vérifiée. Plafond mensuel actif.'
+        : 'Vérification en cours. Téléchargez votre pièce d’identité pour finaliser.';
     Alert.alert('Documents KYC', status, [
       { text: 'OK' },
       user.kycLevel !== 'verified' && {
@@ -298,7 +298,7 @@ const ProfileScreen = () => {
           <Row
             icon="language-outline"
             label="Langue"
-            hint={`${currentLanguage.flag} ${currentLanguage.label}`}
+            hint={currentLanguage.label}
             onPress={pickLanguage}
           />
           <Divider />

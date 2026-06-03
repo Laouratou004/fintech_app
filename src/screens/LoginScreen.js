@@ -94,7 +94,7 @@ const LoginScreen = ({ navigation }) => {
           <View style={{ marginTop: spacing.xl }}>
             <Text style={[styles.title, { color: colors.text }]}>Connexion</Text>
             <Text style={[styles.subtitle, { color: colors.textMuted }]}>
-              Bon retour parmi nous 👋
+              Bon retour parmi nous.
             </Text>
 
             <TextField

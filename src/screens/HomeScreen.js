@@ -81,7 +81,7 @@ const HomeScreen = ({ navigation }) => {
           </View>
           <View style={{ flex: 1, marginLeft: spacing.md }}>
             <Text style={[styles.greeting, { color: colors.textMuted }]}>
-              Bonjour 👋
+              Bonjour
             </Text>
             <Text style={[styles.userName, { color: colors.text }]} numberOfLines={1}>
               {user.fullName}

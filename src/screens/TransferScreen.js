@@ -163,7 +163,7 @@ const TransferScreen = ({ navigation, route }) => {
             }}
             options={countries.map((c) => ({
               value: c.code,
-              label: `${c.flag} ${c.name}`,
+              label: c.name,
             }))}
           />
 

@@ -93,7 +93,7 @@ const SignupScreen = ({ navigation }) => {
 
           <Text style={[styles.title, { color: colors.text }]}>Créer un compte</Text>
           <Text style={[styles.subtitle, { color: colors.textMuted }]}>
-            Rejoignez la diaspora et envoyez en toute sécurité 🇬🇳
+            Rejoignez la diaspora et envoyez en toute sécurité.
           </Text>
 
           <TextField
@@ -129,7 +129,7 @@ const SignupScreen = ({ navigation }) => {
             onChange={(v) => set('country', v)}
             options={countries.map((c) => ({
               value: c.name,
-              label: `${c.flag} ${c.name}`,
+              label: c.name,
             }))}
           />
 
