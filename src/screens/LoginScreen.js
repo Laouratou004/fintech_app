@@ -163,18 +163,31 @@ const LoginScreen = ({ navigation }) => {
               style={{ marginTop: spacing.lg }}
             />
 
-            {/* Démo helper */}
-            <View
+            {/* Identifiants de démonstration — préremplissage rapide pour l'évaluation */}
+            <Pressable
+              onPress={() => {
+                setEmail('demo@diasporapay.com');
+                setPassword('Demo2026!');
+              }}
               style={[
                 styles.demoBox,
-                { backgroundColor: colors.primarySoft, borderColor: colors.primary + '33' },
+                { backgroundColor: colors.primarySoft, borderColor: colors.primary + '55' },
               ]}
             >
-              <Ionicons name="information-circle" size={16} color={colors.primary} />
-              <Text style={[styles.demoText, { color: colors.primary }]}>
-                Démo : demo@diaspora.gn / demo1234
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+                <Ionicons name="information-circle" size={16} color={colors.primary} />
+                <Text style={[styles.demoTitle, { color: colors.primary }]}>
+                  Compte de démonstration
+                </Text>
+              </View>
+              <Text style={[styles.demoText, { color: colors.text }]}>
+                <Text style={{ fontWeight: '700' }}>E-mail :</Text> demo@diasporapay.com{'\n'}
+                <Text style={{ fontWeight: '700' }}>Mot de passe :</Text> Demo2026!
               </Text>
-            </View>
+              <Text style={[styles.demoHint, { color: colors.textMuted }]}>
+                Touchez ce bloc pour pré-remplir le formulaire
+              </Text>
+            </Pressable>
           </View>
 
           <View style={styles.footer}>
@@ -229,16 +242,20 @@ const styles = StyleSheet.create({
   errorText: { ...typography.small, flex: 1 },
 
   demoBox: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-    padding: 10,
+    padding: 14,
     borderRadius: radius.md,
-    borderWidth: 1,
+    borderWidth: 1.5,
+    borderStyle: 'dashed',
     marginTop: spacing.md,
-    justifyContent: 'center',
   },
-  demoText: { ...typography.small },
+  demoTitle: { ...typography.h3, fontSize: 14 },
+  demoText: { ...typography.small, marginTop: 8, lineHeight: 20 },
+  demoHint: {
+    ...typography.tiny,
+    fontStyle: 'italic',
+    textTransform: 'none',
+    marginTop: 6,
+  },
 
   footer: {
     flexDirection: 'row',
